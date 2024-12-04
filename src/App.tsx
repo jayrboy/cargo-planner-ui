@@ -11,6 +11,7 @@ import NotFound from './views/not-found/NotFound';
 import CargoList from './views/cargo-list/CargoList';
 import ItemEdit from './views/cargo-edit/CargoEdit';
 import ResultList from './views/result-list/ResultList';
+import ViewResult from './views/view-result/ViewResult';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         <Route path="/result-list" element={<ResultList />} />
         <Route
           path="/result/:instanceId/:resultId/:truckIndex"
-          element={<>View Result</>}
+          element={<ViewResult />}
         />
       </Routes>
     </Router>
