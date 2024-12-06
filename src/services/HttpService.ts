@@ -3,7 +3,7 @@ const defaultHeaders = new Headers({
   'Content-Type': 'application/json',
 });
 
-async function http<T>(request: RequestInfo): Promise<Response> {
+async function http(request: RequestInfo): Promise<Response> {
   const response: Response = await fetch(request);
 
   if (!response.ok) {
@@ -14,7 +14,7 @@ async function http<T>(request: RequestInfo): Promise<Response> {
   return response;
 }
 
-export async function httpGet<T>(
+export async function httpGet(
   url: string,
   args: RequestInit = {
     method: 'get',
@@ -22,10 +22,10 @@ export async function httpGet<T>(
   }
 ): Promise<Response> {
   console.log('GET @ ' + url);
-  return await http<T>(new Request(url, args));
+  return await http(new Request(url, args));
 }
 
-export async function httpDelete<T>(
+export async function httpDelete(
   url: string,
   args: RequestInit = {
     method: 'delete',
@@ -33,10 +33,10 @@ export async function httpDelete<T>(
   }
 ): Promise<Response> {
   console.log('DELETE @ ' + url);
-  return await http<T>(new Request(url, args));
+  return await http(new Request(url, args));
 }
 
-export async function httpPost<T>(
+export async function httpPost(
   url: string,
   body: any,
   args: RequestInit = {
@@ -49,10 +49,10 @@ export async function httpPost<T>(
   }
 ): Promise<Response> {
   console.log('POST @ ' + url);
-  return await http<T>(new Request(url, args));
+  return await http(new Request(url, args));
 }
 
-export async function httpPut<T>(
+export async function httpPut(
   url: string,
   body: any,
   args: RequestInit = {
@@ -62,5 +62,5 @@ export async function httpPut<T>(
   }
 ): Promise<Response> {
   console.log('PUT @ ' + url);
-  return await http<T>(new Request(url, args));
+  return await http(new Request(url, args));
 }

@@ -1,7 +1,7 @@
 import logo from '../../assets/react.svg';
 import './Home.css';
 import { Link } from 'react-router-dom';
-import { Row, Col, Image, Container, Button } from 'react-bootstrap';
+import { Row, Col, Image, Container } from 'react-bootstrap';
 
 const Home = () => {
   return (
@@ -21,19 +21,13 @@ const Home = () => {
         <Col md="auto">
           {' '}
           <Link to="/cargo-edit/new">
-            <Button variant="primary" size="lg">
-              New cargo
-            </Button>
+            <button className="btn btn-primary btn-sm">New cargo</button>
           </Link>{' '}
           <Link to="/cargo-list">
-            <Button variant="primary" size="lg">
-              Load cargo
-            </Button>
+            <button className="btn btn-primary btn-sm">Load cargo</button>
           </Link>{' '}
           <Link to="/result-list">
-            <Button variant="primary" size="lg">
-              View results
-            </Button>
+            <button className="btn btn-primary btn-sm">View results</button>
           </Link>
         </Col>
       </Row>

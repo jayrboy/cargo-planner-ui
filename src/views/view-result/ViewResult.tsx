@@ -81,15 +81,17 @@ function ViewResult() {
         <Row>
           <Col>
             <ListGroup>
-              {trucks.map((truck, i) => (
-                <button
-                  key={i}
-                  onClick={() =>
-                    navigate(`/result/${instanceId}/${resultId}/${i}`)
-                  }
-                >
-                  Truck {i + 1}
-                </button>
+              {trucks.map((_, i) => (
+                <>
+                  <button
+                    key={i}
+                    onClick={() =>
+                      navigate(`/result/${instanceId}/${resultId}/${i}`)
+                    }
+                  >
+                    Truck {i + 1}
+                  </button>
+                </>
               ))}
             </ListGroup>
           </Col>

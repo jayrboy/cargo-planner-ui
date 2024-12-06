@@ -2,15 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Item, Truck, Instance } from '../../models/Input';
 import ItemListItem from './ItemListItem';
-import {
-  Button,
-  Container,
-  Col,
-  ListGroup,
-  Form,
-  Card,
-  Row,
-} from 'react-bootstrap';
+import { Container, ListGroup, Card } from 'react-bootstrap';
 import {
   getInstance,
   postInstance,
@@ -46,13 +38,13 @@ function CargoEdit() {
     return lastItem ? lastItem.type + 1 : 1;
   }
 
-  function defaultInstance(): Instance {
-    return {
-      userId,
-      items: [],
-      truck: defaultTruck(),
-    };
-  }
+  // function defaultInstance(): Instance {
+  //   return {
+  //     userId,
+  //     items: [],
+  //     truck: defaultTruck(),
+  //   };
+  // }
 
   function defaultItem(id: number = 0): Item {
     return {
@@ -142,48 +134,56 @@ function CargoEdit() {
         <Card>
           <Card.Body>
             <Card.Title>Truck</Card.Title>
-            <Form>
-              <Row>
-                <Form.Group as={Col}>
-                  <Form.Label>Width</Form.Label>
-                  <Form.Control
+            <form>
+              <div className="row">
+                <div className="col">
+                  <label>Width</label>
+                  <input
+                    type="text"
+                    className="form-control"
                     value={truck.width}
                     onChange={(e) =>
                       setTruck({ ...truck, width: Number(e.target.value) })
                     }
                     placeholder="Width [cm]"
                   />
-                </Form.Group>
-                <Form.Group as={Col}>
-                  <Form.Label>Height</Form.Label>
-                  <Form.Control
+                </div>
+                <div className="col">
+                  <label>Height</label>
+                  <input
+                    type="text"
+                    className="form-control"
                     value={truck.height}
                     onChange={(e) =>
                       setTruck({ ...truck, height: Number(e.target.value) })
                     }
                     placeholder="Height [cm]"
                   />
-                </Form.Group>
-                <Form.Group as={Col}>
-                  <Form.Label>Depth</Form.Label>
-                  <Form.Control
+                </div>
+                <div className="col">
+                  <label>Depth</label>
+                  <input
+                    type="text"
+                    className="form-control"
                     value={truck.depth}
                     onChange={(e) =>
                       setTruck({ ...truck, depth: Number(e.target.value) })
                     }
                     placeholder="Depth [cm]"
                   />
-                </Form.Group>
-              </Row>
-            </Form>
+                </div>
+              </div>
+            </form>
           </Card.Body>
           <Card.Body>
             <Card.Subtitle>Front axle</Card.Subtitle>
-            <Form>
-              <Row>
-                <Form.Group as={Col}>
-                  <Form.Label>Offset</Form.Label>
-                  <Form.Control
+            <form>
+              <div className="row">
+                <div className="col">
+                  <label>Offset</label>
+                  <input
+                    type="number"
+                    className="form-control"
                     value={truck.frontAxle.offset}
                     onChange={(e) =>
                       setTruck({
@@ -196,10 +196,12 @@ function CargoEdit() {
                     }
                     placeholder="Offset [cm]"
                   />
-                </Form.Group>
-                <Form.Group as={Col}>
-                  <Form.Label>Initial load</Form.Label>
-                  <Form.Control
+                </div>
+                <div className="col">
+                  <label>Initial load</label>
+                  <input
+                    type="number"
+                    className="form-control"
                     value={truck.frontAxle.initialLoad}
                     onChange={(e) =>
                       setTruck({
@@ -212,10 +214,12 @@ function CargoEdit() {
                     }
                     placeholder="Initial load [kg]"
                   />
-                </Form.Group>
-                <Form.Group as={Col}>
-                  <Form.Label>Maximum load</Form.Label>
-                  <Form.Control
+                </div>
+                <div className="col">
+                  <label>Maximum load</label>
+                  <input
+                    type="number"
+                    className="form-control"
                     value={truck.frontAxle.maximumLoad}
                     onChange={(e) =>
                       setTruck({
@@ -228,15 +232,18 @@ function CargoEdit() {
                     }
                     placeholder="Maximum load [kg]"
                   />
-                </Form.Group>
-              </Row>
-            </Form>
+                </div>
+              </div>
+            </form>
+
             <Card.Subtitle>Rear axle</Card.Subtitle>
-            <Form>
-              <Row>
-                <Form.Group as={Col}>
-                  <Form.Label>Offset</Form.Label>
-                  <Form.Control
+            <form>
+              <div className="row">
+                <div className="col">
+                  <label>Offset</label>
+                  <input
+                    type="number"
+                    className="form-control"
                     value={truck.rearAxle.offset}
                     onChange={(e) =>
                       setTruck({
@@ -249,10 +256,12 @@ function CargoEdit() {
                     }
                     placeholder="Offset [cm]"
                   />
-                </Form.Group>
-                <Form.Group as={Col}>
-                  <Form.Label>Initial load</Form.Label>
-                  <Form.Control
+                </div>
+                <div className="col">
+                  <label>Initial load</label>
+                  <input
+                    type="number"
+                    className="form-control"
                     value={truck.rearAxle.initialLoad}
                     onChange={(e) =>
                       setTruck({
@@ -265,10 +274,12 @@ function CargoEdit() {
                     }
                     placeholder="Initial load [kg]"
                   />
-                </Form.Group>
-                <Form.Group as={Col}>
-                  <Form.Label>Maximum load</Form.Label>
-                  <Form.Control
+                </div>
+                <div className="col">
+                  <label>Maximum load</label>
+                  <input
+                    type="number"
+                    className="form-control"
                     value={truck.rearAxle.maximumLoad}
                     onChange={(e) =>
                       setTruck({
@@ -281,95 +292,120 @@ function CargoEdit() {
                     }
                     placeholder="Maximum load [kg]"
                   />
-                </Form.Group>
-              </Row>
-            </Form>
+                </div>
+              </div>
+            </form>
           </Card.Body>
         </Card>
         <br />
         <Card>
           <Card.Body>
             <Card.Title>Cargo</Card.Title>
-            <Form>
-              <Row>
-                <Form.Group as={Col}>
-                  <Form.Label>Description (optional)</Form.Label>
-                  <Form.Control
+            <form>
+              <div className="row">
+                <div className="col">
+                  <label>Description (optional)</label>
+                  <input
+                    type="text"
+                    className="form-control"
                     value={item.description}
                     onChange={(e) =>
                       setItem({ ...item, description: e.target.value })
                     }
-                    type="text"
                     placeholder="Description"
                   />
-                </Form.Group>
-                <Form.Group as={Col}>
-                  <Form.Label>Weight</Form.Label>
-                  <Form.Control
+                </div>
+                <div className="col">
+                  <label>Weight</label>
+                  <input
+                    type="number"
+                    className="form-control"
                     value={item.weight}
                     onChange={(e) =>
                       setItem({ ...item, weight: Number(e.target.value) })
                     }
                     placeholder="Weight [kg]"
                   />
-                </Form.Group>
-                <Form.Group as={Col}>
-                  <Form.Label>Count:</Form.Label>
-                  <Form.Control
+                </div>
+                <div className="col">
+                  <label>Count:</label>
+                  <input
+                    type="number"
+                    className="form-control"
                     value={item.count}
                     onChange={(e) =>
                       setItem({ ...item, count: Number(e.target.value) })
                     }
                   />
-                </Form.Group>
-              </Row>
-              <Row>
-                <Form.Group as={Col}>
-                  <Form.Label>Width</Form.Label>
-                  <Form.Control
+                </div>
+              </div>
+
+              <div className="row mt-3">
+                <div className="col">
+                  <label>Width</label>
+                  <input
+                    type="number"
+                    className="form-control"
                     value={item.width}
                     onChange={(e) =>
                       setItem({ ...item, width: Number(e.target.value) })
                     }
                     placeholder="Width [cm]"
                   />
-                </Form.Group>
-                <Form.Group as={Col}>
-                  <Form.Label>Height</Form.Label>
-                  <Form.Control
+                </div>
+                <div className="col">
+                  <label>Height</label>
+                  <input
+                    type="number"
+                    className="form-control"
                     value={item.height}
                     onChange={(e) =>
                       setItem({ ...item, height: Number(e.target.value) })
                     }
                     placeholder="Height [cm]"
                   />
-                </Form.Group>
-                <Form.Group as={Col}>
-                  <Form.Label>Depth</Form.Label>
-                  <Form.Control
+                </div>
+                <div className="col">
+                  <label>Depth</label>
+                  <input
+                    type="number"
+                    className="form-control"
                     value={item.depth}
                     onChange={(e) =>
                       setItem({ ...item, depth: Number(e.target.value) })
                     }
                     placeholder="Depth [cm]"
                   />
-                </Form.Group>
-              </Row>
-              {item.type === 0 ? (
-                <Button onClick={handleAdd}>Add</Button>
-              ) : (
-                <Button variant="success" onClick={handleSave}>
-                  Save
-                </Button>
-              )}{' '}
-              <Button
-                onClick={() => {
-                  setItem(defaultItem());
-                }}
-              >
-                New
-              </Button>
-            </Form>
+                </div>
+              </div>
+
+              <div className="mt-3">
+                {item.type === 0 ? (
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={handleAdd}
+                  >
+                    Add
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="btn btn-success"
+                    onClick={handleSave}
+                  >
+                    Save
+                  </button>
+                )}
+                <button
+                  type="button"
+                  className="btn btn-secondary ms-2"
+                  onClick={() => setItem(defaultItem())}
+                >
+                  New
+                </button>
+              </div>
+            </form>
           </Card.Body>
         </Card>
         <br />
@@ -379,32 +415,30 @@ function CargoEdit() {
               <ListGroup.Item key={i}>
                 <ItemListItem item={item} />
                 <br />
-                <Button
-                  size="sm"
-                  variant="secondary"
+                <button
+                  className="btn btn-secondary btn-sm"
                   onClick={() => handleEdit(i)}
                 >
                   Edit
-                </Button>{' '}
-                <Button
-                  size="sm"
-                  variant="danger"
+                </button>{' '}
+                <button
+                  className="btn btn-danger btn-sm"
                   onClick={() => handleDelete(i)}
                 >
                   Delete
-                </Button>
+                </button>
               </ListGroup.Item>
             );
           })}
         </ListGroup>
         <br />
-        <Button variant="success" onClick={handleSend}>
+        <button className="btn btn-success" onClick={handleSend}>
           Save changes
-        </Button>{' '}
+        </button>{' '}
         {id !== 'new' ? (
-          <Button onClick={handleSolve}>Solve</Button>
+          <button onClick={handleSolve}>Solve</button>
         ) : (
-          <Button disabled>Solve</Button>
+          <button disabled>Solve</button>
         )}
       </Container>
     </div>

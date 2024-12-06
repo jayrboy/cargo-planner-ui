@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Result } from '../../models/ListItem';
 import { getResults } from '../../services/ResultService';
-import { Button, ListGroup, ButtonGroup } from 'react-bootstrap';
+import { ListGroup, ButtonGroup } from 'react-bootstrap';
 import { getUserId } from '../../services/UserService';
 
 function ResultList() {
@@ -31,12 +31,12 @@ function ResultList() {
             {result.display + ', Instance [' + result.instanceId + ']'}
 
             <ButtonGroup className="float-right">
-              <Button
-                variant="primary"
+              <button
+                className="btn btn-primary"
                 onClick={() => handleView(result.instanceId, result.id)}
               >
                 View result
-              </Button>
+              </button>
             </ButtonGroup>
           </ListGroup.Item>
         );

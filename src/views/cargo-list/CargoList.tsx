@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getInstances } from '../../services/InstanceService';
 import { Instance } from '../../models/ListItem';
-import { Button, ButtonGroup, ListGroup } from 'react-bootstrap';
+import { ButtonGroup, ListGroup } from 'react-bootstrap';
 import { getUserId } from '../../services/UserService';
 
 function CargoList() {
@@ -36,18 +36,18 @@ function CargoList() {
             {instance.display + ', ' + instance.itemCount + ' items'}
 
             <ButtonGroup className="float-right">
-              <Button
-                variant="secondary"
+              <button
+                className="btn btn-secondary"
                 onClick={() => handleEdit(instance.id)}
               >
                 Edit
-              </Button>
-              <Button
-                variant="primary"
+              </button>
+              <button
+                className="btn btn-primary"
                 onClick={() => handleSolve(instance.id)}
               >
                 Solve
-              </Button>
+              </button>
             </ButtonGroup>
           </ListGroup.Item>
         );

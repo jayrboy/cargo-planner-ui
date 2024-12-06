@@ -1,4 +1,4 @@
-import { httpGet, httpPost, httpPut, httpDelete } from './HttpService';
+import { httpGet } from './HttpService';
 import * as result from '../models/Result';
 import * as listItem from '../models/ListItem';
 
