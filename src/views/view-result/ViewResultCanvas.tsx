@@ -8,7 +8,9 @@ import {
 } from '@react-three/fiber';
 import { Container, Card, Row, Col } from 'react-bootstrap';
 import { Truck, Item } from '../../models/Result';
-import { OrbitControls } from '@react-three/drei';
+// import { OrbitControls } from '@react-three/drei';
+import { OrbitControls } from 'three-stdlib';
+
 import * as THREE from 'three';
 
 extend({ OrbitControls });
